@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!--  Exam exam = new NewlecExam(); -->
+	<bean id = "exam" class="spring.di.entity.NewlecExam"/> <!-- 반드시 패키지명까지 써줄 것, refrence형식 -->
+	
+	<!-- ExamConsole console = new GridExamConsole(exam); -->
+	<bean id= "console" class="spring.di.ui.GridExamConsole">
+		<property name="exam" ref="exam" /> 	<!-- console.setExam(exam); -->
+		<!-- exam 변수를 setExam 함수를 뜻하는 name 값에 집어넣는다. -->
+		<!-- console이 setExam이라는 함수를 가지고 있어야 한다. 없다면 오류남  -->
+		<!-- 원래는 name 값이 setExam을 호출하는 것이지만 set을 생략하고 소문자로 바꿔야 함..규칙임 -->
+		<!-- value, ref에는 id 값을 넣는다. value형식인지 refrence형식인 지에 따라 선택해서 써주면 됨 -->
+	</bean>
+	
+
+
+</beans>

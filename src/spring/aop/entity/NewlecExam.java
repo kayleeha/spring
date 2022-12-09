@@ -1,25 +1,24 @@
-package spring.di.entity;
+package spring.aop.entity;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.MessageCodeFormatter;
 
 @Service
 public class NewlecExam implements Exam {
 
-	@Value("20") //Value는 기본 초기값을 설정할 수 있게 도와주는 annotation
+
 	private int kor;
-	@Value("30")
+
 	private int eng;
 	private int math;
 	private int com;
-	
+
 	public NewlecExam() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
+
+
+
 	public NewlecExam(int kor, int eng, int math, int com) {
 
 		this.kor = kor;
@@ -32,14 +31,31 @@ public class NewlecExam implements Exam {
 
 	@Override
 	public int total() {
+		//long start = System.currentTimeMillis();
 		
-		return kor+eng+math+com;
+		int result = kor+eng+math+com;
+		
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+//		long end = System.currentTimeMillis();
+//		
+//		String message = (end - start) + "ms 시간이 걸렸습니다.";
+//		System.out.println(message);
+//		
+		return result;
 	}
-	
+
 	@Override
 	public float avg() {
+
+		float result = total() / 4.0f;
 		
-		return total() / 4.0f;
+		return result;
 	}
 
 	public int getKor() {
@@ -80,6 +96,6 @@ public class NewlecExam implements Exam {
 	public String toString() {
 		return "NewlecExam [kor=" + kor + ", eng=" + eng + ", math=" + math + ", com=" + com + "]";
 	}
-	
-	
+
+
 }
